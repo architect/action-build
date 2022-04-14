@@ -15,6 +15,7 @@ runs:
           node-version: ${{ matrix.node-version }}
 
       - name: Env
+        shell: bash
         run: |
           echo "Event name: ${{ github.event_name }}"
           echo "Git ref:    ${{ github.ref }}"
@@ -23,14 +24,17 @@ runs:
           VER=`node --version`; echo "Node ver:   $VER"
           VER=`npm --version`; echo "npm ver:    $VER"
       - name: Install
+        shell: bash
         run: npm install
 
       - name: Hydrate
+        shell: bash
         run: npx arc hydrate
         env:
           CI: true
 
       - name: Test
+        shell: bash
         run: npm test
         env:
           CI: true
