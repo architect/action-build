@@ -1,0 +1,33 @@
+name: 'Architect Build'
+description: 'Builds and Architect app'
+runs:
+  using: "composite"
+  steps:
+      - name: Check out repo
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Env
+        run: |
+          echo "Event name: ${{ github.event_name }}"
+          echo "Git ref:    ${{ github.ref }}"
+          echo "GH actor:   ${{ github.actor }}"
+          echo "SHA:        ${{ github.sha }}"
+          VER=`node --version`; echo "Node ver:   $VER"
+          VER=`npm --version`; echo "npm ver:    $VER"
+      - name: Install
+        run: npm install
+
+      - name: Hydrate
+        run: npx arc hydrate
+        env:
+          CI: true
+
+      - name: Test
+        run: npm test
+        env:
+          CI: true
