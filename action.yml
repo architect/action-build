@@ -15,7 +15,7 @@ runs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 14
 
       - name: Env
         shell: bash
@@ -26,18 +26,14 @@ runs:
           echo "SHA:        ${{ github.sha }}"
           VER=`node --version`; echo "Node ver:   $VER"
           VER=`npm --version`; echo "npm ver:    $VER"
-      - name: Install
-        shell: bash
-        run: npm install
+
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
 
       - name: Hydrate
         shell: bash
         run: npx arc hydrate
-        env:
-          CI: true
 
       - name: Test
         shell: bash
         run: npm test
-        env:
-          CI: true
