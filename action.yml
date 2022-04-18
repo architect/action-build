@@ -30,6 +30,10 @@ runs:
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
+      - name: Vendor dist files
+        shell: bash
+        run: npm run dist --if-present
+
       - name: Hydrate
         shell: bash
         run: npx arc hydrate
