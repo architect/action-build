@@ -33,6 +33,10 @@ runs:
         with:
           useLockFile: ${{ inputs.use_lock_file }}
 
+      - name: Install Architect
+        shell: bash
+        run: npm install @architect/architect
+
       - name: Vendor dist files
         shell: bash
         run: npm run dist --if-present
@@ -40,8 +44,6 @@ runs:
       - name: Hydrate
         shell: bash
         run: npx arc hydrate
-        env:
-          CI: true
 
       - name: Test
         shell: bash
