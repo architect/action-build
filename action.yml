@@ -40,6 +40,8 @@ runs:
       - name: Hydrate
         shell: bash
         run: npx arc hydrate
+        env:
+          CI: true
 
       - name: Test
         shell: bash
