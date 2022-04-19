@@ -1,8 +1,9 @@
 name: 'Architect Build'
 description: 'Builds and Architect app'
-defaults:
-  run:
-    shell: bash
+inputs:
+  use_lock_file:
+    required: false
+    default: true
 runs:
   using: "composite"
   steps:
@@ -29,6 +30,8 @@ runs:
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
+        with:
+          useLockFile: ${{ inputs.use_lock_file }}
 
       - name: Vendor dist files
         shell: bash
