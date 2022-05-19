@@ -44,6 +44,16 @@ jobs:
           username: GitHub Actions
 ```
 
+## Options
+
+This action has a few options you can configure:
+
+| Key | Required | Value | Default | Description |
+| - | - | - | - | - |
+| use_lock_file | No | Boolean | true | By default, this action will use a lock file like package-lock.json, npm-shrinkwrap.json or yarn.lock. You can set `useLockFile: false` to use just package.json |
+| node-version | No | Number | 14 | The node-version input is optional. If not supplied, the node version defaults to 14.  |
+
+
 ## Contributing
 
 [Find out more about contributing to Architect](https://arc.codes/docs/en/about/contribute)
