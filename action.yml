@@ -4,6 +4,9 @@ inputs:
   use_lock_file:
     required: false
     default: true
+  node-version:
+    required: false
+    default: 14
 runs:
   using: "composite"
   steps:
@@ -16,7 +19,7 @@ runs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: ${{ inputs.node-version }}
 
       - name: Env
         shell: bash
