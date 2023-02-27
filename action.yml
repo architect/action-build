@@ -6,7 +6,7 @@ inputs:
     default: true
   node-version:
     required: false
-    default: 14
+    default: lts/*
 runs:
   using: "composite"
   steps:
